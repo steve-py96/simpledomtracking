@@ -93,3 +93,9 @@ pretty straight forward this is the thought behind the library, what it does is 
 ## ups and downs
 
 this thing can be pretty useful if you're controlling the delegation well (in theory and practically), it's even pretty useful in projects with element-binded event handling (since tracking is much different compared to normal user interactivity it's also nice to keep it out of the casual logic tbh), but as everything also this has it's negative points: it can become pretty complex with all the bubbling and other existing listeners etc, therefore it's always a good idea to read around a bit, besides the [MDN-articles](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events) there's are plenty of blogs about this topic like this one from [jasonformat](https://jasonformat.com/event-delegation-vs-direct-binding/) for example
+
+<br />
+
+## hacky hacks
+
+- it is possible to reduce logic at spots by using the CSS-line `pointer-events: none` on specific children, I'm not sure tbh if that "hint" should be given even tho but it's a possibility for quickfixes (and quickfixes can lead to quickbugs, so use with caution)
