@@ -1,0 +1,10 @@
+{
+  "name": "simpledomtracking",
+  "version": "0.0.1",
+  "license": "UNLICENSED",
+  "source": "../../src/index.ts",
+  "main": "../../dist/index.js",
+  "module": "../../dist/index.module.js",
+  "esmodule": "../../dist/index.modern.js",
+  "unpkg": "../../dist/index.umd.js"
+}

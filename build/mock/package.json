@@ -1,0 +1,10 @@
+{
+  "name": "simpledomtracking",
+  "version": "0.0.1",
+  "license": "UNLICENSED",
+  "source": "../../src/mock.ts",
+  "main": "../../dist/mock/index.js",
+  "module": "../../dist/mock/index.module.js",
+  "esmodule": "../../dist/mock/index.modern.js",
+  "unpkg": "../../dist/mock/index.umd.js"
+}
