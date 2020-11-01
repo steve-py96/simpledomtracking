@@ -5,16 +5,15 @@
 
 version: 2
 updates:
-  - package-ecosystem: "npm"
-    directory: "/"
+  - package-ecosystem: 'npm'
+    directory: '/'
     schedule:
-      interval: "weekly"
-      day: "sunday"
+      interval: 'weekly'
+      day: 'sunday'
     labels:
-      - "package update"
-      - "dependabot"
+      - 'package update'
+      - 'dependabot'
     assignees:
-      - "steve-py96"
+      - 'steve-py96'
     commit-message:
-      prefix: "dependabot // "
-
+      prefix: 'dependabot // '
