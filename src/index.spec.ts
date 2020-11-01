@@ -58,7 +58,7 @@ describe('testing the tracking factory', () => {
 
     expect(simpleTracker.isTracking(mockElement(simpleTracker.create(keys => ({ [keys.KeyA]: 'hihi' }))))).toBe(true)
 
-    expect(simpleTracker.isTracking(mockElement({ fail: 1 }))).toBe(false)
+    expect(simpleTracker.isTracking(mockElement({ fail: '1' }))).toBe(false)
   })
 
   it('get data from a tracked element', () => {

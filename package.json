@@ -1,34 +1,31 @@
 {
   "name": "simpledomtracking",
-  "version": "0.0.1",
+  "version": "0.1.0",
+  "description": "> tracking via DOM made simple (hopefully? 👀)",
+  "author": "steve_py96",
   "license": "UNLICENSED",
+  "types": "dist/index.d.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.module.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/steve-py96/simpledomtracking"
+  },
+  "keywords": [
+    "tracking",
+    "dom"
+  ],
   "scripts": {
     "test": "jest --findRelatedTests --no-cache src/**",
     "generate": "node -r esm scripts/generatePackages.js",
-    "postbuild": "node -r esm scripts/postbuild",
     "format": "pretty-quick --pattern 'src/**/*.ts'",
-    "build-main": "microbundle --cwd build/main",
-    "build-mock": "microbundle --cwd build/mock",
-    "build-setAttributes": "microbundle --cwd build/setAttributes",
-    "build-all": "yarn build-main && yarn build-mock && yarn build-setAttributes && yarn postbuild"
-  },
-  "sdtBundles": {
-    "main": {
-      "src": "index.ts",
-      "dist": ""
-    },
-    "mock": {
-      "src": "mock.ts",
-      "dist": "mock"
-    },
-    "setAttributes": {
-      "src": "setAttributes.ts",
-      "dist": "setAttributes"
-    }
+    "build": "yarn cleanup && yarn rollup --config",
+    "cleanup": "node -r esm ./scripts/cleanup",
+    "prepublish": "yarn test && yarn build"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "pretty-quick --staged --pattern 'src/**/*.ts' && yarn test && yarn build-all"
+      "pre-commit": "pretty-quick --staged --pattern 'src/**/*.ts' && yarn test && yarn build"
     }
   },
   "devDependencies": {
@@ -36,11 +33,19 @@
     "esm": "^3.2.25",
     "husky": "^4.3.0",
     "jest": "^26.6.1",
-    "microbundle": "^0.12.4",
     "prettier": "^2.1.2",
     "pretty-quick": "^3.1.0",
     "rollup": "^2.32.1",
+    "rollup-plugin-filesize": "^9.0.2",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.28.0",
     "ts-jest": "^26.4.3",
+    "tslib": "^2.0.3",
     "typescript": "^4.0.5"
-  }
+  },
+  "files": [
+    "dist",
+    "mockElement",
+    "setAttributes"
+  ]
 }

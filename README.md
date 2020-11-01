@@ -1,10 +1,14 @@
+![GitHub package.json version](https://img.shields.io/github/package-json/v/steve-py96/simpledomtracking?style=flat-square&color=000000)
+![npm bundle size](https://img.shields.io/bundlephobia/minzip/simpledomtracking?style=flat-square&color=000000)
+![David](https://img.shields.io/david/steve-py96/simpledomtracking?style=flat-square&color=000000)
+
 # simpledomtracking
 
 > tracking via DOM made simple (hopefully? 👀)
 
 ## examples
 
-1. generate a tracker:
+first generate a tracker:
 
 ```js
 const simpleTracker = trackingFactory(
@@ -16,7 +20,7 @@ const simpleTracker = trackingFactory(
 )
 ```
 
-2. use it, examples of how to use:
+then use it, examples of how to add tracking to your DOM:
 
 ```jsx
 // JSX
@@ -42,7 +46,7 @@ setAttributes(
 )
 ```
 
-3. start tracking!:
+finally start tracking!:
 
 ```js
 // yourTracking might be google analytics f.e. (const yourTracking = data => window.dataLayer.push(data))
@@ -54,6 +58,11 @@ document.addEventListener('click', ({ target }) => {
 ```
 
 <br />
+
+### just looking for some code? check out...
+
+- [the jsx example](./examples/jsx.html)
+- [the vanilla example](./examples/vanilla.html)
 
 ---
 
@@ -71,8 +80,8 @@ pretty straight forward this is the thought behind the library, what it does is 
    - keys = tracking keys, those will be used later on when sending the data to any server
    - values = tracking keys for the DOM, these can be important but in general you'll have a straight forward naming in mind and therefore this library doesn't wanna be in your way there
 2. it gives you functions based on your previously defined object
-3. you push those tracking keys on elements with values you define meanwhile to spread your tracking
-4. the user clicks and you pull the data from the DOM into your request
+3. you push those tracking keys on elements with values you define meanwhile to spread your tracking thru your site
+4. the user clicks and you pull the data from the DOM into your request, done
 
 <br />
 

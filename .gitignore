@@ -1,3 +1,6 @@
 dist/
+mockElement/
+setAttributes/
+
 node_modules/
 *.log

@@ -1,0 +1,61 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Example!</title>
+  </head>
+
+  <body>
+    <nav>
+      <ul>
+        <li>home</li>
+        <li>about</li>
+        <li>super boring page</li>
+        <li>super awesome page</li>
+      </ul>
+    </nav>
+
+    <section>
+      <p>random content, click the list items tho :)</p>
+    </section>
+
+    <script type="module">
+      import { trackingFactory } from 'https://unpkg.com/simpledomtracking@0.1.0?module'
+      import { setAttributes } from 'https://unpkg.com/simpledomtracking@0.1.0/setAttributes?module'
+
+      /* -------------------------------------------------- */
+
+      const tracking = trackingFactory(
+        {
+          category: 'category',
+          label: 'label',
+        },
+        { detectionKey: 'category' }
+      )
+
+      /* -------------------------------------------------- */
+
+      document.querySelectorAll('nav > ul > li').forEach(el =>
+        setAttributes(
+          el,
+          tracking.create(keys => ({
+            [keys.category]: 'navigation',
+            [keys.label]: el.textContent,
+          }))
+        )
+      )
+
+      /* -------------------------------------------------- */
+
+      document.addEventListener('click', ({ target }) => {
+        if (!tracking.isTracking(target)) return
+
+        console.log('sending data!!', tracking.getTrackingData(target))
+      })
+    </script>
+
+    <script nomodule>
+      document.body.innerHTML = '<h1>GOD, Y U DO DIS??</h1>'
+    </script>
+  </body>
+</html>

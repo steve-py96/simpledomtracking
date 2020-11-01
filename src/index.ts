@@ -1,16 +1,19 @@
 import type { TrackingFactoryOptions, StringDict } from './types'
 
+const data = 'data-'
+
 export const trackingFactory = <T extends string>(
   obj: Record<T, string>,
   { detectionKey, customPrefix }: TrackingFactoryOptions<T>
 ) => {
-  const prefix = `data-${customPrefix || 'track'}-`
+  const prefix = customPrefix || 'track'
   const trackingKeyDictionary: Record<string, T> = {} as Record<string, T>
   const DOMKeyDictionary: Record<T, string> = {} as Record<T, string>
-  const prefixString = (str: string) => `${prefix}${str}`
+  const prefixString = (str: string) => `${data}${prefix}-${str}`
 
   for (const i in obj) {
     const key = prefixString(obj[i])
+
     trackingKeyDictionary[key] = i
     DOMKeyDictionary[i] = key
   }
@@ -23,9 +26,9 @@ export const trackingFactory = <T extends string>(
     getTrackingData: (element: HTMLElement) => {
       const re: StringDict = {}
 
-      for (const key in element.dataset) {
-        if (key.indexOf(prefix) === 0) re[trackingKeyDictionary[key]] = element.dataset[key] || ''
-      }
+      Array.prototype.slice.call(element.attributes).forEach(element => {
+        if (element.name.indexOf(data + prefix) === 0) re[trackingKeyDictionary[element.name]] = element.value || ''
+      })
 
       return re
     },
