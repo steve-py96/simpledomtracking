@@ -21,7 +21,7 @@
     "format": "pretty-quick --pattern 'src/**/*.ts'",
     "build": "yarn cleanup && yarn rollup --config",
     "cleanup": "node -r esm ./scripts/cleanup",
-    "prepublish": "yarn test && yarn build"
+    "prepare": "yarn test && yarn build"
   },
   "husky": {
     "hooks": {
