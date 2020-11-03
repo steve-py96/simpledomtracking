@@ -90,7 +90,7 @@ pretty straight forward this is the thought behind the library, what it does is 
 ### functionality
 
 - [trackingFactory](docs/trackingFactory.md)
-- [mock](docs/mock.md)
+- [mockElement](docs/mockElement.md)
 - [setAttributes](docs/setAttributes.md)
 
 ### other
