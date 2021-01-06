@@ -7,7 +7,9 @@ type TestKey = 'KeyA' | 'KeyB' | 'KeyC'
 describe('testing the tracking factory', () => {
   it('it returns the expected functions', () => {
     expect(
-      JSON.stringify(trackingFactory<TestKey>({ KeyA: 'keyA', KeyB: 'keyB', KeyC: 'keyC' }, { detectionKey: 'KeyA' }))
+      JSON.stringify(
+        trackingFactory<TestKey>({ KeyA: 'keyA', KeyB: 'keyB', KeyC: 'keyC' }, { detectionKey: params => params.KeyA })
+      )
     ).toBe(
       JSON.stringify({
         create: () => ({}),
@@ -19,7 +21,10 @@ describe('testing the tracking factory', () => {
 
   it('create creates the expected object to push into a DOM-element', () => {
     expect(
-      trackingFactory<TestKey>({ KeyA: 'keyA', KeyB: 'keyB', KeyC: 'keyC' }, { detectionKey: 'KeyA' }).create(keys => ({
+      trackingFactory<TestKey>(
+        { KeyA: 'keyA', KeyB: 'keyB', KeyC: 'keyC' },
+        { detectionKey: params => params.KeyA }
+      ).create(keys => ({
         [keys.KeyA]: 'valueA',
         [keys.KeyB]: 'valueB',
       }))
@@ -36,7 +41,7 @@ describe('testing the tracking factory', () => {
     expect(
       trackingFactory<TestKey>(
         { KeyA: 'keyA', KeyB: 'keyB', KeyC: 'keyC' },
-        { detectionKey: 'KeyA', customPrefix: 'hans' }
+        { detectionKey: params => params.KeyA, customPrefix: 'hans' }
       ).create(keys => ({
         [keys.KeyA]: 'valueA',
         [keys.KeyB]: 'valueB',
@@ -53,7 +58,7 @@ describe('testing the tracking factory', () => {
   it('detect if an element is tracked', () => {
     const simpleTracker = trackingFactory<TestKey>(
       { KeyA: 'keyA', KeyB: 'keyB', KeyC: 'keyC' },
-      { detectionKey: 'KeyA' }
+      { detectionKey: params => params.KeyA }
     )
 
     expect(simpleTracker.isTracking(mockElement(simpleTracker.create(keys => ({ [keys.KeyA]: 'hihi' }))))).toBe(true)
@@ -64,7 +69,7 @@ describe('testing the tracking factory', () => {
   it('get data from a tracked element', () => {
     const simpleTracker = trackingFactory<TestKey>(
       { KeyA: 'keyA', KeyB: 'keyB', KeyC: 'keyC' },
-      { detectionKey: 'KeyA' }
+      { detectionKey: params => params.KeyA }
     )
 
     expect(
@@ -79,7 +84,7 @@ describe('testing the tracking factory', () => {
   it('get data from a tracked element with custom prefix', () => {
     const simpleTracker = trackingFactory<TestKey>(
       { KeyA: 'keyA', KeyB: 'keyB', KeyC: 'keyC' },
-      { detectionKey: 'KeyA', customPrefix: 'hans' }
+      { detectionKey: params => params.KeyA, customPrefix: 'hans' }
     )
 
     expect(

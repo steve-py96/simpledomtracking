@@ -1,3 +1,15 @@
 !dist/
 !setAttributes/
 !mockElement/
+examples/
+scripts/
+.vscode/
+.github/
+.editorconfig
+.gitignore
+.nvmrc
+.prettierrc
+jest.config.js
+src/
+rollup.config.js
+tsconfig.json

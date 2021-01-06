@@ -18,7 +18,8 @@ export const trackingFactory = <T extends string>(
     DOMKeyDictionary[i] = key
   }
 
-  const isTracking = (element: HTMLElement) => element.hasAttribute(DOMKeyDictionary[detectionKey])
+  const isTracking = (element: HTMLElement) =>
+    element.hasAttribute(DOMKeyDictionary[trackingKeyDictionary[detectionKey(DOMKeyDictionary)]])
 
   return {
     create: (callback: (param: Record<T, string>) => StringDict): StringDict => callback(DOMKeyDictionary),
