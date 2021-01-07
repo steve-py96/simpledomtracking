@@ -16,7 +16,7 @@ const simpleTracker = trackingFactory(
     keyForTracking: 'keyInDOM',
     otherKeyForTracking: 'otherKeyInDOM',
   },
-  { detectionKey: keys => kes.keyForTracking }
+  { detectionKey: keys => keys.keyForTracking }
 )
 ```
 
