@@ -28,7 +28,7 @@ export const trackingFactory = <T extends string>(
       const re: StringDict = {}
 
       Array.prototype.forEach.call(element.attributes, element => {
-        if (element.name.indexOf(data + prefix) === 0) re[trackingKeyDictionary[element.name]] = element.value || ''
+        if (!element.name.indexOf(data + prefix)) re[trackingKeyDictionary[element.name]] = element.value || ''
       })
 
       return re

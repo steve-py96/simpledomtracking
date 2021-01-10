@@ -45,7 +45,7 @@ the `trackingKey` is kept in JS and only important for your tracking backend/thi
 
 the supported options with definitions:
 
-- `detectionKey`: a required string which is equal to one `trackingKey` above to detect whether a DOM-element contains the tracking data, f.e. category, id or similar are recommended to use
+- `detectionKey`: a required callback which provides the provided tracking-keys to pick one of em, it'll detect whether some DOM-element is tracked if the corresponding DOMKey of the detectionKey is found in the attributes
 - `customPrefix`: an optional string for a custom prefix for the DOMKey when being injected, default is "track" (results in data-track-DOMKey)
 
 <br />
