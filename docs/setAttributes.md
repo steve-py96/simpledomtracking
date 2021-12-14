@@ -1,3 +1,3 @@
 # setAttributes
 
-**oneliner**: this sets multiple attributes at once, simply a loop over an object which calls `element.setAttribute(...)`
+**oneliner**: this sets multiple attributes of a provided element at once by simply looping over the provided object's keys/values & using `element.setAttribute(...)` with them

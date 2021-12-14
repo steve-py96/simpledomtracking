@@ -1,6 +1,4 @@
 !dist/
-!setAttributes/
-!mockElement/
 examples/
 scripts/
 .vscode/
@@ -9,7 +7,7 @@ scripts/
 .gitignore
 .nvmrc
 .prettierrc
-jest.config.js
 src/
-rollup.config.js
 tsconfig.json
+vite.config.ts
+

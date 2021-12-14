@@ -20,8 +20,7 @@
     </section>
 
     <script type="module">
-      import { trackingFactory } from 'https://unpkg.com/simpledomtracking?module'
-      import { setAttributes } from 'https://unpkg.com/simpledomtracking/setAttributes/index.module.js'
+      import { trackingFactory, setAttributes } from 'simpledomtracking'
 
       /* -------------------------------------------------- */
 
@@ -30,7 +29,7 @@
           category: 'category',
           label: 'label',
         },
-        keys => keys.category
+        { detectionKey: keys => keys.category }
       )
 
       /* -------------------------------------------------- */

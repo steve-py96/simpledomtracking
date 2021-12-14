@@ -1,12 +1,12 @@
-import type { StringDict } from './types'
+export { mockElement }
 
-function hasAttribute(this: { [key: string]: string }, name: string) {
+function hasAttribute(this: Record<string, unknown>, name: string) {
   return !!this[name]
 }
 
-export const mockElement = (data: StringDict): HTMLElement => {
-  const attributes = []
-  for (const key in data) attributes.push({ name: key, value: data[key] })
+const mockElement = (data: Record<string, string>): HTMLElement => {
+  const attributes: Array<Attr> = []
+  for (const key in data) attributes.push({ name: key, value: data[key] } as Attr)
 
-  return (Object.assign({ hasAttribute, attributes }, data) as {}) as HTMLElement
+  return Object.assign(data, { hasAttribute, attributes }) as unknown as HTMLElement
 }
